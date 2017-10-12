@@ -1,0 +1,42 @@
+[
+	{
+		"firstName": "Lars",
+		"lastName" : "Eriksson"
+	}, 
+	{
+		"firstName": "Erik",
+		"lastName" : "Eriksson"
+	}, 
+	{
+		"firstName": "Lars",
+		"lastName" : "Larsson"
+	},
+	{
+		"firstName": "Klara",
+		"lastName" : "Eriksson"
+	},
+	{
+		"firstName": "Torsten",
+		"lastName" : "Svensson"
+	},
+	{
+		"firstName": "Hans",
+		"lastName" : "Svensson"
+	},
+	{
+		"firstName": "Anders",
+		"lastName" : "Eriksson"
+	},
+	{
+		"firstName": "Hans",
+		"lastName" : "Svensson"
+	},
+	{
+		"firstName": "Hans",
+		"lastName" : "Svensson"
+	},
+		{
+		"firstName": "Torsten",
+		"lastName" : "Klaesson"
+	},
+]
