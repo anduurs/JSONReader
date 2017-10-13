@@ -2,10 +2,10 @@ package arbetsprov;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.junit.Test;
 
 import arbetsprov.JSONReader.OccurenceFilter;
@@ -18,7 +18,28 @@ public class JSONReaderTest {
 	@Test
 	public void namesShouldBeInOrderOfOccurence()
 	{
+		Map<String, Integer> firstNamesSorted = jsonReader.getNamesInOrderOfOccurence("firstName", OccurenceFilter.NONE);
+		List<Integer> firstNamesOccurencesList = new ArrayList<>();
 		
+		for(String name: firstNamesSorted.keySet())
+		{
+			firstNamesOccurencesList.add(firstNamesSorted.get(name));
+		}
+		
+		Integer previous = null;
+		boolean isSorted = true;
+		
+		for(Integer i : firstNamesOccurencesList)
+		{
+			if(previous != null && i.compareTo(previous) > 0) 
+			{
+				isSorted = false;
+				break;
+			}
+			previous = i;
+		}
+		
+		assertTrue(isSorted);
 	}
 	
 	@Test

@@ -8,6 +8,8 @@ public class Main
 	{
 		JSONReader reader = new JSONReader("entries.json");
 		
+		if(args.length <= 0) return;
+		
 		if(args[0].equals("2"))
 		{
 			reader.printNamesInOrderOfOccurences(OccurenceFilter.NONE);

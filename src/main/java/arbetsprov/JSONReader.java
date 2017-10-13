@@ -30,13 +30,6 @@ public class JSONReader
 		jsonArray = new JSONArray(readFile(fileName));
 	}
 	
-	public void printAllEntries()
-	{
-		printNamesInOrderOfOccurences(OccurenceFilter.NONE);
-		printNamesSorted(true);
-		printNamesFiltered("Svensson");
-	}
-	
 	public void printNamesInOrderOfOccurences(OccurenceFilter occurenceFilter)
 	{
 		Map<String, Integer> firstNames = getNamesInOrderOfOccurence("firstName", occurenceFilter);
@@ -129,13 +122,7 @@ public class JSONReader
 	
 	public Map<String, Integer> getNamesInOrderOfOccurence(String nameType, OccurenceFilter filter)
 	{
-		Map<String, Integer> nameTable = new HashMap<>();
-		
-		for(int i = 0; i < jsonArray.length(); i++)
-		{
-			String firstName = jsonArray.getJSONObject(i).get(nameType).toString();
-			addToTable(nameTable, firstName);
-		}
+		Map<String, Integer> nameTable = getJSONEntriesTable(nameType);
 		
 		//Sorts the entries in the hashmap by their value
 		Map<String, Integer> nameTableSorted = nameTable.entrySet().stream().
@@ -154,9 +141,9 @@ public class JSONReader
 		while(iterator.hasNext())
 		{
 			Map.Entry<String, Integer> entry = iterator.next();
-			boolean evenUp = entry.getValue() % 2 == 0;
+			boolean even = entry.getValue() % 2 == 0;
 				
-			if((filter == OccurenceFilter.EVEN) ? !evenUp : evenUp)
+			if((filter == OccurenceFilter.EVEN) ? !even : even)
 			{
 				iterator.remove();
 			}
@@ -175,6 +162,19 @@ public class JSONReader
 		{
 			table.put(key, 1);
 		}
+	}
+	
+	private Map<String, Integer> getJSONEntriesTable(String nameType)
+	{
+		Map<String, Integer> nameTable = new HashMap<>();
+		
+		for(int i = 0; i < jsonArray.length(); i++)
+		{
+			String firstName = jsonArray.getJSONObject(i).get(nameType).toString();
+			addToTable(nameTable, firstName);
+		}
+		
+		return nameTable;
 	}
 	
 	private String readFile(String fileName)
