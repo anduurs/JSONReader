@@ -32,7 +32,7 @@ public class JSONReader
 	
 	public void printAllEntries()
 	{
-		printNamesInOrderOfOccurences(OccurenceFilter.ODD);
+		printNamesInOrderOfOccurences(OccurenceFilter.NONE);
 		printNamesSorted(true);
 		printNamesFiltered("Svensson");
 	}
@@ -42,7 +42,7 @@ public class JSONReader
 		Map<String, Integer> firstNames = getNamesInOrderOfOccurence("firstName", occurenceFilter);
 		Map<String, Integer> lastNames  = getNamesInOrderOfOccurence("lastName", occurenceFilter);
 
-		System.out.println("Most popular first names: ");
+		System.out.println("\nMost popular first names: ");
 		
 		for(String name: firstNames.keySet())
 		{
